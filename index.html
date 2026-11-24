@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PocketCore AI — Modular Pocket Smart Gadget | ₹1,299</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            core: {
+              bg: '#08080A',
+              surface: '#121215',
+              card: '#18181C',
+              border: 'rgba(255, 255, 255, 0.08)',
+              orange: '#FF5500',
+              orangeGlow: '#FF6A1A',
+              cyan: '#00F0FF',
+              green: '#00FF88',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Industrial Hardware Aesthetics & Animations */
+    body {
+      background-color: #08080A;
+      color: #F4F4F6;
+      overflow-x: hidden;
+    }
+
+    /* Subtle dot-grid background inspired by Teenage Engineering / Nothing */
+    .bg-tech-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Hardware Matte Chassis Finish */
+    .hardware-chassis {
+      background: linear-gradient(145deg, #1d1d22 0%, #0d0d10 100%);
+      box-shadow:
+        0 25px 60px -15px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Glassmorphic Screen Bezel */
+    .hardware-screen {
+      background: #040406;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 4px 16px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Orange Focus Ring Knurling Texture */
+    .focus-ring {
+      background: repeating-conic-gradient(
+        from 0deg,
+        #FF5500 0deg 6deg,
+        #D94300 6deg 12deg
+      );
+      box-shadow:
+        0 0 18px rgba(255, 85, 0, 0.35),
+        inset 0 0 6px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Vinyl Spin Animation */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-vinyl {
+      animation: spinSlow 6s linear infinite;
+    }
+    .animate-vinyl.paused {
+      animation-play-state: paused;
+    }
+
+    /* Desktop Pet Blink Animation */
+    @keyframes petBlink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96% { transform: scaleY(0.1); }
+    }
+    .pet-eye-lid {
+      animation: petBlink 4s infinite;
+    }
+
+    /* Module Snap Transitions */
+    .module-left {
+      transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: right center;
+    }
+    .module-left.detached {
+      opacity: 0;
+      transform: translateX(-28px) scale(0.92);
+      pointer-events: none;
+      width: 0;
+      margin-right: 0;
+      overflow: hidden;
+    }
+
+    .module-top {
+      transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-origin: bottom center;
+    }
+    .module-top.detached {
+      opacity: 0;
+      transform: translateY(-24px) scale(0.92);
+      pointer-events: none;
+      height: 0;
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+
+    /* Hide scrollbar for horizontal pill bar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom subtle glass panel */
+    .glass-panel {
+      background: rgba(20, 20, 24, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Camera flash effect */
+    @keyframes shutterFlash {
+      0% { opacity: 0.9; }
+      100% { opacity: 0; }
+    }
+    .flash-active {
+      animation: shutterFlash 0.28s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-core-orange selection:text-white pb-20 md:pb-0">
+
+  <!-- ========================================================= -->
+  <!-- 1. TOP ANNOUNCEMENT BAR                                   -->
+  <!-- ========================================================= -->
+  <div class="bg-core-orange text-white text-xs sm:text-sm font-medium py-2 px-4 text-center tracking-wide">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+      <span class="inline-flex items-center gap-1.5 font-mono uppercase text-[11px] bg-black/25 px-2 py-0.5 rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-core-green animate-pulse"></span>
+        Launch Offer
+      </span>
+      <span>Flat <strong>₹1,299</strong> &bull; Free Express Delivery Across India &bull; Cash on Delivery Available</span>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 2. STICKY NAVIGATION BAR                                  -->
+  <!-- ========================================================= -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-lg bg-core-card border border-white/15 flex items-center justify-center relative overflow-hidden group-hover:border-core-orange/60 transition">
+          <div class="w-3.5 h-3.5 rounded-sm bg-core-orange shadow-[0_0_10px_#FF5500]"></div>
+          <div class="w-1 h-1 rounded-full bg-core-cyan absolute top-1.5 right-1.5"></div>
+        </div>
+        <div class="leading-tight">
+          <span class="font-display font-bold text-lg tracking-tight text-white">PocketCore<span class="text-core-orange"> AI</span></span>
+          <span class="block font-mono text-[10px] text-zinc-400 uppercase tracking-widest -mt-0.5">Modular Gen-1</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-300">
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#modules" class="hover:text-white transition">Modules</a>
+        <a href="#comparison" class="hover:text-white transition">Why PocketCore</a>
+        <a href="#reviews" class="hover:text-white transition">Reviews</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+
+      <!-- Right Actions: Cart Button & Quick Buy -->
+      <div class="flex items-center gap-3">
+        <button id="open-cart-btn" type="button" aria-label="Open shopping cart"
+          class="relative p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-200 transition flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+          </svg>
+          <span class="hidden sm:inline text-xs font-medium">Cart</span>
+          <span id="cart-badge" class="min-w-[20px] h-5 px-1.5 rounded-full bg-core-orange text-white text-[11px] font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <button type="button" onclick="quickBuyNow()"
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-core-orange hover:bg-core-orangeGlow text-white text-xs font-semibold tracking-wide transition shadow-[0_0_20px_rgba(255,85,0,0.3)]">
+          Order ₹1,299
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 3. HERO SECTION + INTERACTIVE LIVE GADGET SIMULATOR       -->
+  <!-- ========================================================= -->
+  <section class="relative bg-tech-grid pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+    <!-- Subtle Ambient Orange & Cyan Glows -->
+    <div class="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-core-orange/15 blur-[120px]"></div>
+    <div class="pointer-events-none absolute top-40 right-0 w-96 h-96 rounded-full bg-core-cyan/10 blur-[130px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+        <!-- LEFT COLUMN: Product Copy, Pricing & CTA -->
+        <div class="lg:col-span-6 space-y-6">
+          <!-- Pill Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-zinc-300">
+            <span class="w-2 h-2 rounded-full bg-core-orange animate-ping"></span>
+            <span>VIRAL MODULAR AI GADGET &bull; IN STOCK</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+            One Pocket Gadget.<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-core-orange via-amber-400 to-core-cyan">20+ Superpowers.</span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-xl">
+            Just speak what you want — <strong class="text-zinc-200">PocketCore AI</strong> builds custom apps and games on the spot. Snap on magnetic hardware modules to transform it into a focus-ring camera, webcam, 4G hotspot, wireless mouse &amp; keyboard, synth, TV remote, FM radio, and desk pet.
+          </p>
+
+          <!-- Rating & Buyers -->
+          <div class="flex flex-wrap items-center gap-4 text-sm">
+            <div class="flex items-center gap-1 text-amber-400">
+              <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="text-white font-semibold ml-1">4.9/5</span>
+            </div>
+            <span class="text-zinc-500">|</span>
+            <a href="#reviews" class="text-zinc-300 hover:text-white underline decoration-zinc-600 underline-offset-4">340+ Verified Indian Buyers</a>
+          </div>
+
+          <!-- Price Block -->
+          <div class="p-5 rounded-2xl bg-core-surface border border-white/10 space-y-4">
+            <div class="flex flex-wrap items-baseline gap-3">
+              <span class="font-display text-4xl font-bold text-white">₹1,299</span>
+              <span class="text-lg text-zinc-500 line-through font-mono">₹2,999</span>
+              <span class="px-2.5 py-1 rounded-lg bg-core-green/15 border border-core-green/30 text-core-green font-mono text-xs font-bold">
+                57% OFF
+              </span>
+              <span class="text-xs text-zinc-400 ml-auto font-mono">Incl. all taxes</span>
+            </div>
+
+            <!-- Quantity + Add to Cart / Buy Now -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <!-- Quantity Selector -->
+              <div class="flex items-center justify-between bg-black/50 border border-white/10 rounded-xl px-2 py-1.5 sm:w-32">
+                <button type="button" onclick="changeHeroQty(-1)" class="w-9 h-9 rounded-lg hover:bg-white/10 text-zinc-300 font-bold text-lg transition" aria-label="Decrease quantity">&minus;</button>
+                <span id="hero-qty" class="font-mono font-semibold text-white text-base">1</span>
+                <button type="button" onclick="changeHeroQty(1)" class="w-9 h-9 rounded-lg hover:bg-white/10 text-zinc-300 font-bold text-lg transition" aria-label="Increase quantity">+</button>
+              </div>
+
+              <!-- Add to Cart Button -->
+              <button type="button" onclick="addHeroToCart(false)"
+                class="flex-1 py-3.5 px-5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-sm transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+                <span id="hero-atc-label">Add to Cart — ₹1,299</span>
+              </button>
+
+              <!-- Buy Now Button -->
+              <button type="button" onclick="addHeroToCart(true)"
+                class="flex-1 py-3.5 px-5 rounded-xl bg-core-orange hover:bg-core-orangeGlow text-white font-semibold text-sm transition shadow-[0_8px_30px_rgba(255,85,0,0.35)] flex items-center justify-center gap-2">
+                <span>Buy Now</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/5 text-[11px] sm:text-xs text-zinc-400">
+              <div class="flex items-center gap-1.5">
+                <span class="text-core-green">&#10003;</span>
+                <span>COD Available</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-core-cyan">&#128737;</span>
+                <span>1-Year Warranty</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-core-orange">&#9889;</span>
+                <span>Pan-India Shipping</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: INTERACTIVE LIVE GADGET SIMULATOR -->
+        <div class="lg:col-span-6 flex flex-col items-center">
+          <div class="w-full max-w-lg rounded-3xl bg-core-surface/90 border border-white/10 p-5 sm:p-7 shadow-2xl relative">
+            <!-- Simulator Header + Snap-On Module Toggles -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-core-green animate-pulse"></span>
+                <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-300">Interactive Live Demo</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="toggle-cam-mod" type="button" onclick="toggleModule('camera')"
+                  class="px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-core-orange/20 border-core-orange/60 text-core-orange">
+                  <span class="w-1.5 h-1.5 rounded-full bg-core-orange"></span>
+                  Camera Mod
+                </button>
+                <button id="toggle-sensor-mod" type="button" onclick="toggleModule('sensor')"
+                  class="px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-core-cyan/15 border-core-cyan/50 text-core-cyan">
+                  <span class="w-1.5 h-1.5 rounded-full bg-core-cyan"></span>
+                  Sensor/LED Mod
+                </button>
+              </div>
+            </div>
+
+            <!-- HARDWARE STAGE -->
+            <div class="min-h-[340px] sm:min-h-[360px] flex flex-col items-center justify-center py-2 select-none">
+
+              <!-- TOP SNAP-ON SENSOR & RGB LED MODULE -->
+              <div id="hw-sensor-module" class="module-top mb-1.5 flex flex-col items-center">
+                <div class="w-48 sm:w-52 h-16 rounded-t-2xl rounded-b-md hardware-chassis border border-white/15 px-3 py-2 flex items-center justify-between relative">
+                  <!-- PCB Circuit Accent Lines -->
+                  <div class="flex flex-col items-center gap-1">
+                    <div class="w-7 h-7 rounded-md bg-black/70 border border-amber-500/40 flex items-center justify-center">
+                      <div class="w-2.5 h-2.5 rounded-full bg-zinc-700 border border-zinc-500"></div>
+                    </div>
+                    <span class="font-mono text-[8px] text-zinc-500">IR TX</span>
+                  </div>
+
+                  <!-- White PIR Dome Sensor -->
+                  <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-white via-zinc-200 to-zinc-400 shadow-[inset_-2px_-3px_6px_rgba(0,0,0,0.35),0_0_12px_rgba(255,255,255,0.2)] border border-white/60"></div>
+                  </div>
+
+                  <!-- RGB Status LEDs -->
+                  <div class="flex flex-col items-center gap-1">
+                    <div class="flex items-center gap-1.5 bg-black/70 px-2 py-1.5 rounded-md border border-white/10">
+                      <span id="led-red" class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+                      <span id="led-green" class="w-2 h-2 rounded-full bg-core-green shadow-[0_0_8px_#00FF88]"></span>
+                      <span id="led-cyan" class="w-2 h-2 rounded-full bg-core-cyan shadow-[0_0_8px_#00F0FF]"></span>
+                    </div>
+                    <span class="font-mono text-[8px] text-zinc-500">RGB+SENS</span>
+                  </div>
+                </div>
+                <!-- Magnetic Pogo Pins Connector -->
+                <div class="flex gap-2">
+                  <span class="w-1.5 h-1.5 bg-amber-400 rounded-b-sm"></span>
+                  <span class="w-1.5 h-1.5 bg-amber-400 rounded-b-sm"></span>
+                  <span class="w-1.5 h-1.5 bg-amber-400 rounded-b-sm"></span>
+                  <span class="w-1.5 h-1.5 bg-amber-400 rounded-b-sm"></span>
+                </div>
+              </div>
+
+              <!-- MAIN ROW: LEFT CAMERA MODULE + CENTER CORE TOUCHSCREEN -->
+              <div class="flex items-center justify-center">
+                <!-- LEFT SNAP-ON CAMERA MODULE -->
+                <div id="hw-camera-module" class="module-left mr-1.5 flex items-center">
+                  <div class="w-20 sm:w-24 h-52 sm:h-56 rounded-l-2xl rounded-r-md hardware-chassis border border-white/15 p-2 flex flex-col items-center justify-between relative">
+                    <div class="w-full flex items-center justify-between px-1">
+                      <span class="px-1 py-0.5 rounded bg-core-orange text-[8px] font-mono font-bold text-white">L</span>
+                      <span class="font-mono text-[7px] text-zinc-500">CAM-01</span>
+                    </div>
+
+                    <!-- Tactile Orange Focus Ring & Glass Lens -->
+                    <button type="button" onclick="rotateFocusRing()" title="Click to adjust manual focus ring"
+                      class="group relative w-14 h-14 sm:w-16 sm:h-16 rounded-full focus-ring flex items-center justify-center transition-transform duration-300" id="focus-ring-dial">
+                      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-zinc-950 border-2 border-zinc-800 flex items-center justify-center shadow-inner">
+                        <div class="w-5 h-5 rounded-full bg-gradient-to-tr from-indigo-950 via-cyan-900/60 to-zinc-900 border border-white/10 flex items-center justify-center">
+                          <div class="w-1.5 h-1.5 rounded-full bg-cyan-300/70 -translate-x-0.5 -translate-y-0.5"></div>
+                        </div>
+                      </div>
+                    </button>
+
+                    <div class="text-center leading-tight">
+                      <p class="font-mono text-[7px] text-zinc-400 uppercase">Rotate Ring</p>
+                      <p class="font-mono text-[7px] text-core-orange">Manual Focus</p>
+                    </div>
+                  </div>
+                  <!-- Side Pogo Connector -->
+                  <div class="flex flex-col gap-1.5">
+                    <span class="w-1 h-1.5 bg-amber-400 rounded-r-sm"></span>
+                    <span class="w-1 h-1.5 bg-amber-400 rounded-r-sm"></span>
+                    <span class="w-1 h-1.5 bg-amber-400 rounded-r-sm"></span>
+                  </div>
+                </div>
+
+                <!-- CENTER SQUARE TOUCHSCREEN HARDWARE -->
+                <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-[26px] hardware-chassis p-3 relative flex flex-col">
+                  <!-- Orange Top Accent Power Button -->
+                  <div class="w-8 h-1 rounded-t-full bg-core-orange absolute -top-1 right-6 shadow-[0_0_8px_#FF5500]"></div>
+
+                  <!-- Inner Active Screen -->
+                  <div id="gadget-screen" class="w-full h-full rounded-[18px] hardware-screen overflow-hidden relative flex flex-col">
+                    <!-- Dynamic Screen Content Rendered by JS -->
+                  </div>
+
+                  <!-- Subtle Hardware Label -->
+                  <div class="flex items-center justify-between px-2 pt-1.5 text-[8px] font-mono text-zinc-500">
+                    <span>POCKETCORE.OS</span>
+                    <span id="screen-status-dot" class="text-core-green">● ONLINE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INTERACTIVE MODE SWITCHER PILLS -->
+            <div class="mt-4 pt-3 border-t border-white/10">
+              <p class="font-mono text-[10px] text-zinc-400 uppercase tracking-wider mb-2 text-center">Tap a Mode to Test Live on Screen</p>
+              <div id="mode-pills" class="flex flex-wrap justify-center gap-1.5">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. "20+ GADGETS IN YOUR PALM" — FILTERABLE FEATURE GRID   -->
+  <!-- ========================================================= -->
+  <section id="features" class="py-20 bg-core-surface/60 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Heading -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-core-orange">All-In-One Pocket Powerhouse</span>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-2">
+          20+ Gadgets in Your Palm
+        </h2>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          Everything shown in our demo — from voice-created games and a focus-ring webcam to a 4G hotspot, flight radar, and interactive desk pet.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div id="feature-tabs" class="flex flex-wrap justify-center gap-2 mb-10">
+        <button type="button" data-cat="all" class="feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-core-orange text-white shadow-[0_0_16px_rgba(255,85,0,0.3)]">
+          All Superpowers (17)
+        </button>
+        <button type="button" data-cat="ai" class="feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10">
+          AI &amp; Creation
+        </button>
+        <button type="button" data-cat="media" class="feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10">
+          Media &amp; Music
+        </button>
+        <button type="button" data-cat="desk" class="feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10">
+          Productivity &amp; Desk
+        </button>
+        <button type="button" data-cat="utility" class="feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10">
+          Utility &amp; Connectivity
+        </button>
+      </div>
+
+      <!-- Features Grid -->
+      <div id="features-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 5. MODULAR EXPANSION SECTION ("SNAP. EXPAND. CREATE.")    -->
+  <!-- ========================================================= -->
+  <section id="modules" class="py-20 bg-core-bg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-core-cyan">Magnetic Pogo-Pin Ecosystem</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-2">
+            Snap. Expand. Create.
+          </h2>
+          <p class="text-zinc-400 mt-3 max-w-2xl text-sm sm:text-base">
+            PocketCore AI isn't locked to one hardware form. Snap magnetic modules onto the left or top edge to unlock dedicated optics, IR blasters, environmental sensors, and dual-LED lighting in under a second.
+          </p>
+        </div>
+        <button type="button" onclick="scrollToSimulator()"
+          class="self-start lg:self-auto px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-zinc-200 transition">
+          &#8593; Try Snapping Modules in Live Simulator
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Module Card 1: Focus-Ring Camera Module -->
+        <div class="rounded-2xl bg-core-surface border border-white/10 p-6 flex flex-col justify-between hover:border-core-orange/50 transition group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-core-orange/15 border border-core-orange/30 flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition">
+              &#128247;
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-display text-xl font-bold text-white">Focus-Ring Camera Module</h3>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-core-orange/20 text-core-orange">LEFT SNAP</span>
+            </div>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+              Attach to the left magnetic rail to capture crisp selfies, macro shots, or flip it around and plug into your laptop as a sharp desk webcam.
+            </p>
+            <ul class="space-y-2 text-xs text-zinc-300 font-mono">
+              <li class="flex items-center gap-2"><span class="text-core-orange">&#9679;</span> Tactile orange manual focus dial</li>
+              <li class="flex items-center gap-2"><span class="text-core-orange">&#9679;</span> Instant Selfie / Rear flip support</li>
+              <li class="flex items-center gap-2"><span class="text-core-orange">&#9679;</span> Plug-and-play USB Webcam mode</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <span class="text-zinc-500">Included in Launch Pack</span>
+            <span class="text-core-green font-mono font-semibold">COMPATIBLE</span>
+          </div>
+        </div>
+
+        <!-- Module Card 2: RGB LED + Sensor + IR Module -->
+        <div class="rounded-2xl bg-core-surface border border-white/10 p-6 flex flex-col justify-between hover:border-core-cyan/50 transition group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-core-cyan/15 border border-core-cyan/30 flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition">
+              &#128225;
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-display text-xl font-bold text-white">RGB + IR + Motion Module</h3>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-core-cyan/20 text-core-cyan">TOP SNAP</span>
+            </div>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+              Turns PocketCore AI into a universal TV &amp; AC remote, motion-sensing desk companion, ambient notification beacon, and bright dual-LED pocket torch.
+            </p>
+            <ul class="space-y-2 text-xs text-zinc-300 font-mono">
+              <li class="flex items-center gap-2"><span class="text-core-cyan">&#9679;</span> Infrared emitter for TVs &amp; appliances</li>
+              <li class="flex items-center gap-2"><span class="text-core-cyan">&#9679;</span> High-output dual LED pocket flashlight</li>
+              <li class="flex items-center gap-2"><span class="text-core-cyan">&#9679;</span> PIR motion dome &amp; programmable RGB LEDs</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <span class="text-zinc-500">Included in Launch Pack</span>
+            <span class="text-core-green font-mono font-semibold">COMPATIBLE</span>
+          </div>
+        </div>
+
+        <!-- Module Card 3: Core Square AI Brain -->
+        <div class="rounded-2xl bg-core-surface border border-white/10 p-6 flex flex-col justify-between hover:border-core-green/50 transition group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-core-green/15 border border-core-green/30 flex items-center justify-center text-2xl mb-5 group-hover:scale-105 transition">
+              &#9889;
+            </div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-display text-xl font-bold text-white">PocketCore Square Unit</h3>
+              <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-core-green/20 text-core-green">CORE HUB</span>
+            </div>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+              The ultra-compact matte-black touchscreen hub with built-in microphone, speaker, Bluetooth HID, Wi-Fi/4G tethering, FM radio chip, and Voice AI OS.
+            </p>
+            <ul class="space-y-2 text-xs text-zinc-300 font-mono">
+              <li class="flex items-center gap-2"><span class="text-core-green">&#9679;</span> Voice-to-App &amp; Game AI generator</li>
+              <li class="flex items-center gap-2"><span class="text-core-green">&#9679;</span> Bluetooth Wireless Mouse &amp; Keyboard</li>
+              <li class="flex items-center gap-2"><span class="text-core-green">&#9679;</span> Ultra-crisp capacitive square display</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <span class="text-zinc-500">Complete Starter Kit</span>
+            <span class="text-white font-mono font-bold">₹1,299 ONLY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 6. PROS & VALUE COMPARISON ("WHY PAY ₹25,000+?")          -->
+  <!-- ========================================================= -->
+  <section id="comparison" class="py-20 bg-core-surface/60 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <!-- Left: Core Pros -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-mono text-xs uppercase tracking-widest text-core-orange">Unbeatable Value</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
+            Why Pay ₹25,000+ for 20 Separate Gadgets?
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Clear the clutter off your desk and out of your backpack. PocketCore AI condenses an entire drawer of tech into one palm-sized square at a fraction of the price.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-core-orange/15 text-core-orange flex items-center justify-center shrink-0 font-bold">1</div>
+              <div>
+                <h4 class="font-semibold text-white text-sm">Ultra-Portable Pocket Size</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Smaller than a smartwatch box — slips into any jeans pocket or clips to a lanyard.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-core-cyan/15 text-core-cyan flex items-center justify-center shrink-0 font-bold">2</div>
+              <div>
+                <h4 class="font-semibold text-white text-sm">Voice-Powered AI Customization</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Need a calculator, timer, or Flappy Bird clone? Just say it and PocketCore AI builds it.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-core-green/15 text-core-green flex items-center justify-center shrink-0 font-bold">3</div>
+              <div>
+                <h4 class="font-semibold text-white text-sm">Endless Modular Expandability</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Snap on cameras, IR blasters, sensors, and LEDs magnetically whenever you need them.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0 font-bold">4</div>
+              <div>
+                <h4 class="font-semibold text-white text-sm">Launch Price of Just ₹1,299</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Less than the cost of a basic webcam alone — backed by COD and a 1-Year Warranty.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Cost Breakdown Comparison Card -->
+        <div class="lg:col-span-7">
+          <div class="rounded-3xl bg-core-bg border border-white/10 p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <h3 class="font-display font-bold text-lg text-white">Buying Separately vs. PocketCore AI</h3>
+              <span class="font-mono text-xs text-core-green bg-core-green/10 px-2.5 py-1 rounded-full">SAVE ₹23,900+</span>
+            </div>
+
+            <div class="divide-y divide-white/5 text-sm my-3">
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">HD USB Webcam &amp; Pocket Camera</span>
+                <span class="font-mono text-zinc-400">₹3,500</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">4G Portable Wi-Fi Hotspot Router</span>
+                <span class="font-mono text-zinc-400">₹2,800</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">Retro Mini Handheld Gaming Console</span>
+                <span class="font-mono text-zinc-400">₹4,500</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">Smart Interactive Desktop Pet</span>
+                <span class="font-mono text-zinc-400">₹7,500</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">Wireless Mini Air Mouse &amp; Keyboard</span>
+                <span class="font-mono text-zinc-400">₹1,800</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">Digital Desk Clock &amp; Weather Station</span>
+                <span class="font-mono text-zinc-400">₹2,400</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <span class="text-zinc-300">Portable FM Radio + Universal IR Remote + Torch</span>
+                <span class="font-mono text-zinc-400">₹2,700</span>
+              </div>
+            </div>
+
+            <!-- Totals Row -->
+            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <span class="block text-xs font-mono text-zinc-400 uppercase">Buying Individually</span>
+                <span class="font-display text-2xl font-bold text-zinc-400 line-through">₹25,200</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-gradient-to-br from-core-orange/25 to-core-orange/5 border border-core-orange/50 flex items-center justify-between">
+                <div>
+                  <span class="block text-xs font-mono text-core-orange uppercase font-semibold">PocketCore AI</span>
+                  <span class="font-display text-3xl font-bold text-white">₹1,299</span>
+                </div>
+                <button type="button" onclick="quickBuyNow()"
+                  class="px-4 py-2.5 rounded-xl bg-core-orange hover:bg-core-orangeGlow text-white text-xs font-bold transition shadow-lg">
+                  Claim Offer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 7. WHAT'S IN THE BOX & HARDWARE SPECIFICATIONS            -->
+  <!-- ========================================================= -->
+  <section class="py-20 bg-core-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- What's in the Box -->
+        <div class="rounded-3xl bg-core-surface border border-white/10 p-6 sm:p-8">
+          <span class="font-mono text-xs uppercase tracking-widest text-core-cyan">Ready Out of the Box</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-6">What's in the Box</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+              <span class="text-2xl">&#128241;</span>
+              <div>
+                <p class="font-semibold text-sm text-white">PocketCore AI Unit</p>
+                <p class="text-xs text-zinc-400">Matte-black touchscreen core</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+              <span class="text-2xl">&#128247;</span>
+              <div>
+                <p class="font-semibold text-sm text-white">Starter Module Pack</p>
+                <p class="text-xs text-zinc-400">Focus Camera + RGB/IR Sensor</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+              <span class="text-2xl">&#128268;</span>
+              <div>
+                <p class="font-semibold text-sm text-white">Braided USB-C Cable</p>
+                <p class="text-xs text-zinc-400">Fast charge &amp; webcam data</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-black/40 border border-white/5 flex items-center gap-3">
+              <span class="text-2xl">&#129525;</span>
+              <div>
+                <p class="font-semibold text-sm text-white">Orange Wrist Lanyard</p>
+                <p class="text-xs text-zinc-400">Plus Quick Start Guide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="rounded-3xl bg-core-surface border border-white/10 p-6 sm:p-8">
+          <span class="font-mono text-xs uppercase tracking-widest text-core-orange">Engineering Details</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-6">Tech Specifications</h3>
+          <dl class="divide-y divide-white/5 text-sm">
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Display</dt>
+              <dd class="font-mono text-zinc-100 text-right">2.0" Vivid IPS Square Touchscreen</dd>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Connectivity</dt>
+              <dd class="font-mono text-zinc-100 text-right">Wi-Fi, Bluetooth 5.2 HID, 4G SIM/Hotspot, FM, IR</dd>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Modular Interface</dt>
+              <dd class="font-mono text-zinc-100 text-right">Dual Magnetic Pogo-Pin Rails (Left &amp; Top)</dd>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Audio</dt>
+              <dd class="font-mono text-zinc-100 text-right">Built-in Hi-Fi Micro Speaker + Dual AI Mics</dd>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Battery &amp; Charging</dt>
+              <dd class="font-mono text-zinc-100 text-right">Up to 18 Hrs Standby &bull; USB-C Fast Charge</dd>
+            </div>
+            <div class="py-2.5 flex justify-between gap-4">
+              <dt class="text-zinc-400">Dimensions &amp; Weight</dt>
+              <dd class="font-mono text-zinc-100 text-right">52 &times; 52 &times; 12 mm &bull; Ultra-Light 48g</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 8. CUSTOMER REVIEWS                                       -->
+  <!-- ========================================================= -->
+  <section id="reviews" class="py-20 bg-core-surface/60 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-mono text-xs uppercase tracking-widest text-amber-400">Verified Indian Buyers</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Loved Across India</h2>
+        <p class="text-zinc-400 mt-2 text-sm">Rated 4.9/5 stars by 340+ tech enthusiasts, students, and creators.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Review 1 -->
+        <div class="rounded-2xl bg-core-bg border border-white/10 p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="font-mono text-[10px] text-core-green bg-core-green/10 px-2 py-0.5 rounded">Verified</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              "Honestly thought it was too good to be true at ₹1,299! The snap-on focus ring camera works brilliantly as my laptop webcam, and I keep the glowing desktop pet running on my WFH desk all day."
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-core-orange/20 text-core-orange font-bold text-xs flex items-center justify-center">AR</div>
+            <div>
+              <p class="text-xs font-semibold text-white">Aarav Sharma</p>
+              <p class="text-[11px] text-zinc-500">Mumbai, Maharashtra</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="rounded-2xl bg-core-bg border border-white/10 p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="font-mono text-[10px] text-core-green bg-core-green/10 px-2 py-0.5 rounded">Verified</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              "I asked it to make a Flappy Bird game and a quick Pomodoro timer — both worked right on the tiny screen! Also super handy as a wireless presentation clicker and mouse in college."
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-core-cyan/20 text-core-cyan font-bold text-xs flex items-center justify-center">PK</div>
+            <div>
+              <p class="text-xs font-semibold text-white">Priya Kulkarni</p>
+              <p class="text-[11px] text-zinc-500">Bengaluru, Karnataka</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="rounded-2xl bg-core-bg border border-white/10 p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="font-mono text-[10px] text-core-green bg-core-green/10 px-2 py-0.5 rounded">Verified</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              "Ordered via COD and got it in 3 days in Delhi. Build quality feels matte and solid like a ₹10k gadget. The FM radio, TV remote, and vinyl music player are my favorite daily features."
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-core-green/20 text-core-green font-bold text-xs flex items-center justify-center">RV</div>
+            <div>
+              <p class="text-xs font-semibold text-white">Rohan Verma</p>
+              <p class="text-[11px] text-zinc-500">New Delhi</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="rounded-2xl bg-core-bg border border-white/10 p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-amber-400 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="font-mono text-[10px] text-core-green bg-core-green/10 px-2 py-0.5 rounded">Verified</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              "Gifted this to my brother who loves Teenage Engineering style gadgets. He hasn't put it down since! The flight radar and mini piano/violin pads are ridiculously fun."
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center">SD</div>
+            <div>
+              <p class="text-xs font-semibold text-white">Sneha Deshmukh</p>
+              <p class="text-[11px] text-zinc-500">Pune, Maharashtra</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 9. FAQ ACCORDION                                          -->
+  <!-- ========================================================= -->
+  <section id="faq" class="py-20 bg-core-bg">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="font-mono text-xs uppercase tracking-widest text-core-orange">Got Questions?</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Frequently Asked Questions</h2>
+      </div>
+
+      <div id="faq-list" class="space-y-3">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 10. FINAL CTA & FOOTER                                    -->
+  <!-- ========================================================= -->
+  <footer class="bg-core-surface border-t border-white/10 pt-14 pb-24 md:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl bg-gradient-to-r from-core-orange/20 via-core-card to-core-cyan/10 border border-white/10 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">Ready to Upgrade Your Pocket?</h3>
+          <p class="text-zinc-300 text-sm mt-1">Get PocketCore AI + Starter Modules today for just <strong class="text-white">₹1,299</strong> with Free Delivery &amp; COD.</p>
+        </div>
+        <button type="button" onclick="quickBuyNow()"
+          class="w-full md:w-auto px-7 py-4 rounded-2xl bg-core-orange hover:bg-core-orangeGlow text-white font-bold text-sm transition shadow-[0_8px_30px_rgba(255,85,0,0.4)]">
+          Order PocketCore AI — ₹1,299
+        </button>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 border-t border-white/5 pt-6">
+        <p>&copy; 2026 PocketCore AI India. All rights reserved.</p>
+        <div class="flex items-center gap-5">
+          <span>Pan-India Express Shipping</span>
+          <span>&bull;</span>
+          <span>1-Year Replacement Warranty</span>
+          <span>&bull;</span>
+          <span>UPI / Card / COD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- 11. MOBILE STICKY BOTTOM BUY BAR                          -->
+  <!-- ========================================================= -->
+  <div class="fixed bottom-0 inset-x-0 z-30 md:hidden glass-panel border-t border-white/15 px-4 py-3 flex items-center justify-between gap-4">
+    <div>
+      <div class="flex items-baseline gap-2">
+        <span class="font-display text-xl font-bold text-white">₹1,299</span>
+        <span class="text-xs text-zinc-500 line-through font-mono">₹2,999</span>
+      </div>
+      <span class="text-[10px] text-core-green font-mono">Free Delivery &bull; COD Available</span>
+    </div>
+    <button type="button" onclick="quickBuyNow()"
+      class="flex-1 max-w-[200px] py-3 px-4 rounded-xl bg-core-orange hover:bg-core-orangeGlow text-white font-bold text-sm shadow-[0_0_20px_rgba(255,85,0,0.35)]">
+      Buy Now
+    </button>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 12. SLIDE-OUT CART DRAWER                                 -->
+  <!-- ========================================================= -->
+  <div id="cart-backdrop" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="closeCart()"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-core-surface border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <!-- Cart Header -->
+    <div class="p-5 border-b border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <h3 class="font-display font-bold text-lg text-white">Your Cart</h3>
+        <span id="drawer-count" class="px-2 py-0.5 rounded-full bg-white/10 text-xs font-mono text-zinc-300">0</span>
+      </div>
+      <button type="button" onclick="closeCart()" class="p-2 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white transition" aria-label="Close cart">
+        &#10005;
+      </button>
+    </div>
+
+    <!-- Free Shipping Banner -->
+    <div class="px-5 py-2.5 bg-core-green/10 border-b border-core-green/20 text-xs text-core-green font-mono flex items-center gap-2">
+      <span>&#10003;</span>
+      <span>You unlocked FREE Express Pan-India Shipping!</span>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Cart Footer -->
+    <div class="p-5 border-t border-white/10 bg-core-bg/80 space-y-4">
+      <div class="space-y-1.5 text-sm">
+        <div class="flex justify-between text-zinc-400">
+          <span>Shipping</span>
+          <span class="text-core-green font-mono">FREE</span>
+        </div>
+        <div class="flex justify-between text-base font-bold text-white pt-2 border-t border-white/10">
+          <span>Total</span>
+          <span id="cart-subtotal" class="font-display text-xl">₹0</span>
+        </div>
+      </div>
+      <button id="checkout-trigger-btn" type="button" onclick="openCheckoutModal()"
+        class="w-full py-3.5 rounded-xl bg-core-orange hover:bg-core-orangeGlow disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition shadow-[0_8px_25px_rgba(255,85,0,0.35)]">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================= -->
+  <!-- 13. CHECKOUT MODAL (UPI / CARD / COD + CONFIRMATION)      -->
+  <!-- ========================================================= -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="w-full max-w-lg rounded-3xl bg-core-surface border border-white/15 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <h3 class="font-display font-bold text-lg text-white">Fast Checkout</h3>
+        <button type="button" onclick="closeCheckoutModal()" class="p-1.5 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white">&#10005;</button>
+      </div>
+
+      <!-- Checkout Form View -->
+      <form id="checkout-form" class="p-6 overflow-y-auto space-y-4" onsubmit="submitOrder(event)">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between text-sm">
+          <span class="text-zinc-300">Order Total (<span id="modal-item-count">1</span> item)</span>
+          <span id="modal-total-amount" class="font-display font-bold text-lg text-core-orange">₹1,299</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs text-zinc-400 mb-1">Full Name *</label>
+            <input type="text" required placeholder="e.g. Aarav Sharma"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-sm text-white focus:outline-none focus:border-core-orange" />
+          </div>
+          <div>
+            <label class="block text-xs text-zinc-400 mb-1">Mobile Number *</label>
+            <input type="tel" required placeholder="+91 98765 43210"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-sm text-white focus:outline-none focus:border-core-orange" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-zinc-400 mb-1">Delivery Address *</label>
+          <input type="text" required placeholder="Flat / Street / Landmark"
+            class="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-sm text-white focus:outline-none focus:border-core-orange" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs text-zinc-400 mb-1">City *</label>
+            <input type="text" required placeholder="Mumbai"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-sm text-white focus:outline-none focus:border-core-orange" />
+          </div>
+          <div>
+            <label class="block text-xs text-zinc-400 mb-1">PIN Code *</label>
+            <input type="text" required pattern="[0-9]{6}" placeholder="400001"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-black/50 border border-white/10 text-sm text-white focus:outline-none focus:border-core-orange" />
+          </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div>
+          <label class="block text-xs text-zinc-400 mb-2">Payment Method</label>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="Cash on Delivery (COD)" checked class="peer hidden" />
+              <div class="p-3 rounded-xl border border-white/10 bg-black/40 text-center peer-checked:border-core-orange peer-checked:bg-core-orange/15 transition">
+                <span class="block text-base">&#128181;</span>
+                <span class="text-xs font-semibold text-white">COD</span>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="UPI (GPay / PhonePe)" class="peer hidden" />
+              <div class="p-3 rounded-xl border border-white/10 bg-black/40 text-center peer-checked:border-core-orange peer-checked:bg-core-orange/15 transition">
+                <span class="block text-base">&#9889;</span>
+                <span class="text-xs font-semibold text-white">UPI</span>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="payment" value="Credit / Debit Card" class="peer hidden" />
+              <div class="p-3 rounded-xl border border-white/10 bg-black/40 text-center peer-checked:border-core-orange peer-checked:bg-core-orange/15 transition">
+                <span class="block text-base">&#128179;</span>
+                <span class="text-xs font-semibold text-white">Card</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3.5 rounded-xl bg-core-orange hover:bg-core-orangeGlow text-white font-bold text-sm transition shadow-[0_8px_25px_rgba(255,85,0,0.35)]">
+          Confirm Order
+        </button>
+      </form>
+
+      <!-- Order Confirmation View -->
+      <div id="checkout-success" class="hidden p-8 text-center space-y-4">
+        <div class="w-16 h-16 mx-auto rounded-full bg-core-green/15 border border-core-green/40 text-core-green text-3xl flex items-center justify-center">
+          &#10003;
+        </div>
+        <h4 class="font-display text-2xl font-bold text-white">Order Confirmed!</h4>
+        <p class="text-sm text-zinc-300">
+          Thank you for ordering <strong class="text-white">PocketCore AI</strong>. Your order <span id="confirmed-order-id" class="font-mono text-core-cyan">#PC-2026-8421</span> has been placed via <span id="confirmed-payment" class="text-white font-medium">COD</span>.
+        </p>
+        <p class="text-xs text-zinc-400">Express dispatch within 24 hours. Tracking link will be sent via SMS &amp; WhatsApp.</p>
+        <button type="button" onclick="closeCheckoutModal()"
+          class="mt-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm transition">
+          Back to Store
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-core-card border border-core-orange/50 text-white text-xs sm:text-sm font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-core-green"></span>
+    <span id="toast-msg">Added to cart</span>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: SIMULATOR, WEB AUDIO, FEATURES, FAQ, CART     -->
+  <!-- ========================================================= -->
+  <script>
+    /* ========================================================
+       1. STATE & CONSTANTS
+       ======================================================== */
+    const PRODUCT = {
+      id: 'pocketcore-ai-gen1',
+      name: 'PocketCore AI — Modular Smart Gadget',
+      variant: 'Matte Black + Starter Modules',
+      price: 1299,
+      mrp: 2999
+    };
+
+    let heroQty = 1;
+    let cart = [];
+    let activeMode = 'ai';
+    let camAttached = true;
+    let sensorAttached = true;
+    let focusAngle = 0;
+    let focusBlur = 0;
+    let camFlipped = false;
+    let musicPlaying = true;
+    let fmFreq = 95.0;
+    let tvVolume = 24;
+    let tvChannel = 108;
+    let audioCtx = null;
+
+    /* ========================================================
+       2. WEB AUDIO API SYNTHESIZER (FOR SYNTH/DRUMS & UI TONES)
+       ======================================================== */
+    function getAudioCtx() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSynthPad(type) {
+      try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+
+        if (type === 'kick') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.frequency.setValueAtTime(150, now);
+          osc.frequency.exponentialRampToValueAtTime(40, now + 0.14);
+          gain.gain.setValueAtTime(0.6, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+          osc.connect(gain); gain.connect(ctx.destination);
+          osc.start(now); osc.stop(now + 0.2);
+        } else if (type === 'snare') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(240, now);
+          osc.frequency.exponentialRampToValueAtTime(110, now + 0.1);
+          gain.gain.setValueAtTime(0.35, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.connect(gain); gain.connect(ctx.destination);
+          osc.start(now); osc.stop(now + 0.13);
+        } else {
+          // Melodic notes: violin, piano, synth, hihat
+          const freqMap = {
+            violin: 523.25, // C5
+            piano: 392.00,  // G4
+            synth: 659.25,  // E5
+            hihat: 1046.50  // C6
+          };
+          const waveMap = {
+            violin: 'sawtooth',
+            piano: 'triangle',
+            synth: 'square',
+            hihat: 'sine'
+          };
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = waveMap[type] || 'sine';
+          osc.frequency.setValueAtTime(freqMap[type] || 440, now);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.005, now + 0.28);
+          osc.connect(gain); gain.connect(ctx.destination);
+          osc.start(now); osc.stop(now + 0.3);
+        }
+      } catch (e) {
+        // Gracefully ignore audio errors on restricted devices
+      }
+    }
+
+    /* ========================================================
+       3. INTERACTIVE GADGET SIMULATOR MODES
+       ======================================================== */
+    const MODES = [
+      { id: 'ai', label: 'AI Maker', icon: '✨' },
+      { id: 'camera', label: 'Camera', icon: '📷' },
+      { id: 'music', label: 'Music', icon: '🎵' },
+      { id: 'pet', label: 'Desk Pet', icon: '👀' },
+      { id: 'radio', label: 'FM Radio', icon: '📻' },
+      { id: 'remote', label: 'TV Remote', icon: '📺' },
+      { id: 'weather', label: 'Weather', icon: '☀️' },
+      { id: 'synth', label: 'Synth/Drums', icon: '🎹' }
+    ];
+
+    function renderModePills() {
+      const container = document.getElementById('mode-pills');
+      container.innerHTML = MODES.map(m => {
+        const isActive = m.id === activeMode;
+        return `
+          <button type="button" onclick="setScreenMode('${m.id}')"
+            class="px-2.5 py-1.5 rounded-xl text-[11px] font-medium transition flex items-center gap-1 border ${
+              isActive
+                ? 'bg-core-orange text-white border-core-orange shadow-[0_0_12px_rgba(255,85,0,0.4)]'
+                : 'bg-white/5 text-zinc-300 border-white/10 hover:bg-white/10'
+            }">
+            <span>${m.icon}</span>
+            <span>${m.label}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setScreenMode(modeId) {
+      activeMode = modeId;
+      renderModePills();
+      renderScreenContent();
+    }
+
+    function toggleModule(mod) {
+      if (mod === 'camera') {
+        camAttached = !camAttached;
+        const el = document.getElementById('hw-camera-module');
+        const btn = document.getElementById('toggle-cam-mod');
+        el.classList.toggle('detached', !camAttached);
+        btn.className = camAttached
+          ? 'px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-core-orange/20 border-core-orange/60 text-core-orange'
+          : 'px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-white/5 border-white/10 text-zinc-400';
+      } else if (mod === 'sensor') {
+        sensorAttached = !sensorAttached;
+        const el = document.getElementById('hw-sensor-module');
+        const btn = document.getElementById('toggle-sensor-mod');
+        el.classList.toggle('detached', !sensorAttached);
+        btn.className = sensorAttached
+          ? 'px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-core-cyan/15 border-core-cyan/50 text-core-cyan'
+          : 'px-2.5 py-1 rounded-lg text-[11px] font-mono border transition flex items-center gap-1.5 bg-white/5 border-white/10 text-zinc-400';
+      }
+      showToast(mod === 'camera'
+        ? (camAttached ? 'Camera Module Snapped On' : 'Camera Module Detached')
+        : (sensorAttached ? 'Sensor/LED Module Snapped On' : 'Sensor/LED Module Detached')
+      );
+    }
+
+    function rotateFocusRing() {
+      focusAngle += 45;
+      const ring = document.getElementById('focus-ring-dial');
+      if (ring) ring.style.transform = `rotate(${focusAngle}deg)`;
+      focusBlur = (focusAngle % 90 === 0) ? 0 : 2;
+      if (activeMode === 'camera') renderScreenContent();
+    }
+
+    function renderScreenContent() {
+      const screen = document.getElementById('gadget-screen');
+
+      // 1. AI APP MAKER
+      if (activeMode === 'ai') {
+        screen.innerHTML = `
+          <div class="p-3 flex flex-col justify-between h-full bg-zinc-950">
+            <div class="rounded-xl bg-core-orange p-2.5 text-white">
+              <p class="font-mono text-[9px] uppercase opacity-80">Voice AI OS</p>
+              <p class="font-display font-bold text-xs leading-tight mt-0.5">Hello! What app should I build?</p>
+            </div>
+            <div id="ai-output-box" class="my-1.5 p-2 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-core-cyan min-h-[42px] flex items-center justify-center text-center">
+              Tap a voice prompt below...
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button type="button" onclick="runAiDemo('Calculator App')" class="py-1.5 px-2 rounded-lg bg-white/10 hover:bg-core-orange/30 text-[9px] font-mono text-white transition">🧮 Calculator</button>
+              <button type="button" onclick="runAiDemo('Flappy Bird')" class="py-1.5 px-2 rounded-lg bg-white/10 hover:bg-core-orange/30 text-[9px] font-mono text-white transition">🐦 Flappy Bird</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. CAMERA & WEBCAM
+      else if (activeMode === 'camera') {
+        screen.innerHTML = `
+          <div class="relative h-full w-full bg-gradient-to-br from-zinc-800 via-zinc-900 to-black flex flex-col justify-between p-2.5 overflow-hidden">
+            <div id="cam-flash" class="pointer-events-none absolute inset-0 bg-white opacity-0 z-20"></div>
+            <div class="flex items-center justify-between text-[9px] font-mono text-white z-10">
+              <span class="px-1.5 py-0.5 rounded bg-black/60">${camFlipped ? 'WEBCAM 1080P' : 'SELFIE CAM'}</span>
+              <span class="text-core-orange">${focusBlur === 0 ? 'AF LOCK' : 'MANUAL'}</span>
+            </div>
+            <div class="flex-1 flex items-center justify-center transition-all duration-300" style="filter: blur(${focusBlur}px)">
+              <div class="w-20 h-20 rounded-full border border-core-orange/60 flex items-center justify-center relative">
+                <span class="text-3xl">${camFlipped ? '💻' : '🤳'}</span>
+                <div class="absolute inset-0 border border-white/20 rounded-full animate-ping opacity-20"></div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between z-10">
+              <button type="button" onclick="camFlipped = !camFlipped; renderScreenContent()" class="px-2 py-1 rounded-lg bg-black/70 text-[9px] font-mono text-zinc-200 hover:bg-white/20">Flip</button>
+              <button type="button" onclick="triggerShutter()" class="w-8 h-8 rounded-full bg-white border-2 border-core-orange active:scale-90 transition"></button>
+              <button type="button" onclick="rotateFocusRing()" class="px-2 py-1 rounded-lg bg-black/70 text-[9px] font-mono text-core-orange">Focus</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 3. MUSIC PLAYER
+      else if (activeMode === 'music') {
+        screen.innerHTML = `
+          <div class="p-3 h-full flex flex-col justify-between bg-zinc-950">
+            <div class="flex justify-between text-[9px] font-mono text-zinc-400">
+              <span class="text-white">Local</span>
+              <span>Bluetooth</span>
+            </div>
+            <div class="flex items-center justify-center my-1">
+              <div class="w-24 h-24 rounded-full bg-zinc-900 border-2 border-zinc-800 flex items-center justify-center relative animate-vinyl ${musicPlaying ? '' : 'paused'}">
+                <div class="w-10 h-10 rounded-full bg-core-orange flex items-center justify-center shadow-[0_0_15px_rgba(255,85,0,0.5)]">
+                  <div class="w-2.5 h-2.5 rounded-full bg-black"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white leading-none">Canon</p>
+                  <p class="text-[9px] text-zinc-500 font-mono mt-0.5">Lo-Fi Pocket Mix</p>
+                </div>
+                <button type="button" onclick="musicPlaying = !musicPlaying; playSynthPad('piano'); renderScreenContent()"
+                  class="w-7 h-7 rounded-full bg-core-orange text-white text-xs flex items-center justify-center">
+                  ${musicPlaying ? '❚❚' : '▶'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 4. DESKTOP PET
+      else if (activeMode === 'pet') {
+        screen.innerHTML = `
+          <div id="pet-stage" class="h-full w-full bg-black flex flex-col items-center justify-center relative cursor-pointer" onclick="playSynthPad('synth')">
+            <div class="flex items-center gap-5">
+              <div class="w-12 h-14 rounded-full bg-core-cyan shadow-[0_0_25px_#00F0FF] flex items-center justify-center pet-eye-lid">
+                <div class="pet-pupil w-4 h-5 rounded-full bg-black transition-transform duration-100"></div>
+              </div>
+              <div class="w-12 h-14 rounded-full bg-core-cyan shadow-[0_0_25px_#00F0FF] flex items-center justify-center pet-eye-lid">
+                <div class="pet-pupil w-4 h-5 rounded-full bg-black transition-transform duration-100"></div>
+              </div>
+            </div>
+            <span class="absolute bottom-2.5 font-mono text-[9px] text-cyan-400/70">Move mouse or tap me!</span>
+          </div>
+        `;
+      }
+
+      // 5. FM RADIO
+      else if (activeMode === 'radio') {
+        screen.innerHTML = `
+          <div class="p-3 h-full flex flex-col justify-between bg-zinc-950">
+            <div class="flex justify-between items-center text-[9px] font-mono">
+              <span class="px-1.5 py-0.5 rounded bg-core-orange text-white">FM LIVE</span>
+              <span class="text-zinc-400">STEREO</span>
+            </div>
+            <div class="text-center">
+              <div class="font-display text-3xl font-bold text-white tracking-tight">${fmFreq.toFixed(1)} <span class="text-xs font-mono text-zinc-400">MHz</span></div>
+              <p class="text-[10px] text-amber-400 font-mono mt-0.5">${fmFreq === 95.0 ? 'Class 95 • Hits' : fmFreq === 98.3 ? 'Radio Mirchi' : 'Red FM Indie'}</p>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <button type="button" onclick="tuneRadio(-0.5)" class="flex-1 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white">-0.5</button>
+              <button type="button" onclick="tuneRadio(0.5)" class="flex-1 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white">+0.5</button>
+            </div>
+          </div>
+        `;
+      }
+
+      // 6. TV REMOTE
+      else if (activeMode === 'remote') {
+        screen.innerHTML = `
+          <div class="p-3 h-full flex flex-col justify-between bg-zinc-950">
+            <div class="flex justify-between items-center text-[9px] font-mono text-zinc-400">
+              <span class="text-core-cyan">IR TV REMOTE</span>
+              <span id="tv-readout">CH ${tvChannel} • VOL ${tvVolume}</span>
+            </div>
+            <div class="grid grid-cols-3 gap-1.5 my-1">
+              <button type="button" onclick="tvAction('VOL+')" class="py-2 rounded-lg bg-blue-600/30 border border-blue-500/40 text-[10px] font-mono text-blue-200 hover:bg-blue-600/50">VOL +</button>
+              <button type="button" onclick="tvAction('UP')" class="py-2 rounded-lg bg-white/10 text-xs text-white hover:bg-white/20">▲</button>
+              <button type="button" onclick="tvAction('CH+')" class="py-2 rounded-lg bg-blue-600/30 border border-blue-500/40 text-[10px] font-mono text-blue-200 hover:bg-blue-600/50">CH +</button>
+              <button type="button" onclick="tvAction('VOL-')" class="py-2 rounded-lg bg-blue-600/30 border border-blue-500/40 text-[10px] font-mono text-blue-200 hover:bg-blue-600/50">VOL -</button>
+              <button type="button" onclick="tvAction('OK')" class="py-2 rounded-lg bg-core-orange text-[10px] font-bold text-white">OK</button>
+              <button type="button" onclick="tvAction('CH-')" class="py-2 rounded-lg bg-blue-600/30 border border-blue-500/40 text-[10px] font-mono text-blue-200 hover:bg-blue-600/50">CH -</button>
+            </div>
+            <div class="text-center font-mono text-[9px] text-zinc-500">Top IR LED pulses on tap</div>
+          </div>
+        `;
+      }
+
+      // 7. WEATHER & CLOCK
+      else if (activeMode === 'weather') {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        screen.innerHTML = `
+          <div class="p-3 h-full flex flex-col justify-between bg-zinc-950">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display text-3xl font-bold text-white leading-none">24°</div>
+                <p class="text-[10px] text-amber-400 font-mono mt-1">Sunny • Mumbai</p>
+              </div>
+              <div class="w-11 h-11 rounded-full border-2 border-white/20 flex items-center justify-center relative">
+                <span class="font-mono text-[9px] text-core-cyan">${timeStr}</span>
+              </div>
+            </div>
+            <div class="space-y-1 text-[9px] font-mono text-zinc-400 border-t border-white/10 pt-2">
+              <div class="flex justify-between"><span>TUE</span><span>☀️ 26° / 21°</span></div>
+              <div class="flex justify-between"><span>WED</span><span>⛅ 25° / 20°</span></div>
+              <div class="flex justify-between"><span>THU</span><span>☀️ 27° / 22°</span></div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 8. SYNTH / DRUMS (PLAYABLE WEB AUDIO)
+      else if (activeMode === 'synth') {
+        screen.innerHTML = `
+          <div class="p-2.5 h-full flex flex-col justify-between bg-zinc-950">
+            <div class="flex justify-between items-center text-[9px] font-mono text-amber-400">
+              <span>POCKET SYNTH</span>
+              <span class="text-zinc-400">TAP PADS</span>
+            </div>
+            <div class="grid grid-cols-3 gap-1.5 flex-1 my-1.5">
+              <button type="button" onclick="playSynthPad('violin')" class="rounded-lg bg-amber-500/20 border border-amber-500/50 hover:bg-amber-500/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">🎻</span><span class="text-[8px] font-mono text-amber-200">Violin</span>
+              </button>
+              <button type="button" onclick="playSynthPad('piano')" class="rounded-lg bg-core-cyan/20 border border-core-cyan/50 hover:bg-core-cyan/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">🎹</span><span class="text-[8px] font-mono text-cyan-200">Piano</span>
+              </button>
+              <button type="button" onclick="playSynthPad('synth')" class="rounded-lg bg-core-orange/20 border border-core-orange/50 hover:bg-core-orange/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">⚡</span><span class="text-[8px] font-mono text-orange-200">Synth</span>
+              </button>
+              <button type="button" onclick="playSynthPad('kick')" class="rounded-lg bg-red-500/20 border border-red-500/50 hover:bg-red-500/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">🥁</span><span class="text-[8px] font-mono text-red-200">Kick</span>
+              </button>
+              <button type="button" onclick="playSynthPad('snare')" class="rounded-lg bg-purple-500/20 border border-purple-500/50 hover:bg-purple-500/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">💥</span><span class="text-[8px] font-mono text-purple-200">Snare</span>
+              </button>
+              <button type="button" onclick="playSynthPad('hihat')" class="rounded-lg bg-core-green/20 border border-core-green/50 hover:bg-core-green/40 active:scale-95 transition flex flex-col items-center justify-center">
+                <span class="text-sm">🔔</span><span class="text-[8px] font-mono text-green-200">Hi-Hat</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function runAiDemo(appName) {
+      const box = document.getElementById('ai-output-box');
+      if (!box) return;
+      playSynthPad('piano');
+      box.innerHTML = `<span class="text-amber-400 animate-pulse">Generating "${appName}"...</span>`;
+      setTimeout(() => {
+        if (document.getElementById('ai-output-box')) {
+          playSynthPad('synth');
+          box.innerHTML = `<span class="text-core-green">✓ ${appName} Ready &amp; Installed!</span>`;
+        }
+      }, 850);
+    }
+
+    function triggerShutter() {
+      const flash = document.getElementById('cam-flash');
+      if (flash) {
+        flash.classList.remove('flash-active');
+        void flash.offsetWidth;
+        flash.classList.add('flash-active');
+      }
+      playSynthPad('snare');
+      showToast('Photo captured to PocketCore Gallery!');
+    }
+
+    function tuneRadio(delta) {
+      fmFreq = Math.max(88.0, Math.min(108.0, +(fmFreq + delta).toFixed(1)));
+      playSynthPad('hihat');
+      renderScreenContent();
+    }
+
+    function tvAction(cmd) {
+      if (cmd === 'VOL+') tvVolume = Math.min(100, tvVolume + 2);
+      if (cmd === 'VOL-') tvVolume = Math.max(0, tvVolume - 2);
+      if (cmd === 'CH+' || cmd === 'UP') tvChannel++;
+      if (cmd === 'CH-') tvChannel = Math.max(1, tvChannel - 1);
+      playSynthPad('hihat');
+
+      // Pulse top RGB/IR LED
+      const led = document.getElementById('led-red');
+      if (led) {
+        led.classList.add('scale-150');
+        setTimeout(() => led.classList.remove('scale-150'), 180);
+      }
+      renderScreenContent();
+    }
+
+    // Desktop Pet eye tracking on mousemove
+    document.addEventListener('mousemove', (e) => {
+      if (activeMode !== 'pet') return;
+      const pupils = document.querySelectorAll('.pet-pupil');
+      const x = (e.clientX / window.innerWidth - 0.5) * 14;
+      const y = (e.clientY / window.innerHeight - 0.5) * 14;
+      pupils.forEach(p => {
+        p.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+
+    function scrollToSimulator() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ========================================================
+       4. 17+ FILTERABLE FEATURES DATA & RENDERING
+       ======================================================== */
+    const FEATURES = [
+      { cat: 'ai', icon: '🗣️', title: 'Voice AI App & Game Creator', desc: 'Just say it and PocketCore AI generates custom apps & games like Flappy Bird, Jump Prince, or a calculator.' },
+      { cat: 'ai', icon: '🤖', title: 'Built-in AI Assistant', desc: 'Voice-ready smart assistant in your pocket for quick answers, reminders, and instant tool creation.' },
+      { cat: 'media', icon: '📷', title: 'Snap-On Camera & Webcam', desc: 'Attach the magnetic focus-ring camera for selfies, or flip it around as a crisp plug-and-play webcam.' },
+      { cat: 'desk', icon: '🖱️', title: 'Wireless Mouse & Keyboard', desc: 'Control your laptop, PC, or smart TV cursor and type directly from the palm of your hand.' },
+      { cat: 'media', icon: '🎵', title: 'Vinyl Music Player', desc: 'Local and Bluetooth audio playback featuring a gorgeous spinning orange vinyl turntable interface.' },
+      { cat: 'media', icon: '🎬', title: 'Pocket Video Player', desc: 'Watch crisp mini clips and offline videos anywhere on the vivid square IPS display.' },
+      { cat: 'media', icon: '🕹️', title: 'Mini Gaming Console', desc: 'Play classic arcade games like Breakout, Flappy Bird, and AI-generated mini games on the go.' },
+      { cat: 'media', icon: '📻', title: 'Live FM Radio Tuner', desc: 'Built-in FM receiver lets you tune into local radio stations without using mobile data.' },
+      { cat: 'media', icon: '🎻', title: 'Pocket Musical Instrument', desc: 'Play virtual violin, piano keys, or rhythmic synth & drum pads right on the touchscreen.' },
+      { cat: 'desk', icon: '⏰', title: 'Desk Clock & Timer', desc: 'Retro pixel-art & analog desk clock modes plus a tactile countdown timer for deep work.' },
+      { cat: 'desk', icon: '☀️', title: 'Real-Time Weather Tool', desc: 'Glanceable live temperature, conditions, and multi-day forecast right on your desk.' },
+      { cat: 'utility', icon: '✈️', title: 'Live Flight Radar', desc: 'Track nearby aircraft overhead in real time with a sleek green radar sweep interface.' },
+      { cat: 'utility', icon: '📶', title: '4G Portable Hotspot', desc: 'Share fast 4G internet with your laptop, tablet, or friends while traveling.' },
+      { cat: 'utility', icon: '📺', title: 'Universal TV Remote', desc: 'Control TV volume, channels, and menus effortlessly using the snap-on IR transmitter.' },
+      { cat: 'desk', icon: '👀', title: 'Interactive Desktop Pet', desc: 'Adorable glowing cyan companion eyes that blink, react, and keep your workspace lively.' },
+      { cat: 'desk', icon: '🖥️', title: 'Super Mini Mac Interface', desc: 'Switch into a charming miniature retro desktop OS interface for pure nostalgic joy.' },
+      { cat: 'utility', icon: '🔦', title: 'Built-in Pocket Torch', desc: 'High-brightness dual LED flashlight ready whenever you need instant illumination.' }
+    ];
+
+    function renderFeatures(filterCat = 'all') {
+      const grid = document.getElementById('features-grid');
+      const items = filterCat === 'all' ? FEATURES : FEATURES.filter(f => f.cat === filterCat);
+
+      grid.innerHTML = items.map(f => `
+        <div class="rounded-2xl bg-core-bg border border-white/10 p-5 hover:border-core-orange/40 hover:-translate-y-0.5 transition duration-200 flex flex-col">
+          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl mb-4">
+            ${f.icon}
+          </div>
+          <h3 class="font-display font-bold text-base text-white mb-1.5">${f.title}</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">${f.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.feature-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.feature-tab').forEach(b => {
+          b.className = 'feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-white/5 text-zinc-300 hover:bg-white/10 border border-white/10';
+        });
+        btn.className = 'feature-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition bg-core-orange text-white shadow-[0_0_16px_rgba(255,85,0,0.3)]';
+        renderFeatures(btn.dataset.cat);
+      });
+    });
+
+    /* ========================================================
+       5. FAQ ACCORDION
+       ======================================================== */
+    const FAQS = [
+      {
+        q: 'Is Cash on Delivery (COD) available across India?',
+        a: 'Yes! We offer Free Express Shipping and Cash on Delivery (COD) across 19,000+ Indian pin codes. Delivery typically takes 3–5 business days.'
+      },
+      {
+        q: 'How does the Voice AI App & Game Creator work?',
+        a: 'Simply press the voice button on PocketCore AI and say what you need — for example, "Make a calculator app" or "Make a Flappy Bird game." The built-in AI OS generates and installs the mini app directly onto your touchscreen in seconds.'
+      },
+      {
+        q: 'Are the Camera and Sensor/LED modules included for ₹1,299?',
+        a: 'Yes! During our Launch Offer at ₹1,299, you receive the PocketCore AI main square touchscreen unit along with the Starter Module Pack (Focus-Ring Camera Module + RGB/IR Sensor Module), USB-C cable, and orange wrist lanyard.'
+      },
+      {
+        q: 'Does it work as a webcam and wireless mouse on Windows & Mac?',
+        a: 'Absolutely. Connect via USB-C for instant plug-and-play 1080p webcam functionality, or pair via Bluetooth 5.2 HID to use PocketCore AI as a wireless air mouse and mini keyboard on Windows, macOS, Android, and iPadOS.'
+      },
+      {
+        q: 'What warranty do I get?',
+        a: 'Every PocketCore AI unit comes with a 1-Year Pan-India Replacement Warranty covering any manufacturing or hardware defects, plus 7-day easy replacement.'
+      }
+    ];
+
+    function renderFaqs() {
+      const list = document.getElementById('faq-list');
+      list.innerHTML = FAQS.map((item, idx) => `
+        <div class="rounded-2xl bg-core-surface border border-white/10 overflow-hidden">
+          <button type="button" onclick="toggleFaq(${idx})"
+            class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition">
+            <span class="font-semibold text-sm sm:text-base text-white">${item.q}</span>
+            <span id="faq-icon-${idx}" class="font-mono text-core-orange text-lg transition-transform">+</span>
+          </button>
+          <div id="faq-body-${idx}" class="hidden px-5 pb-4 text-sm text-zinc-400 leading-relaxed border-t border-white/5 pt-3">
+            ${item.a}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleFaq(idx) {
+      const body = document.getElementById(`faq-body-${idx}`);
+      const icon = document.getElementById(`faq-icon-${idx}`);
+      const isHidden = body.classList.contains('hidden');
+      body.classList.toggle('hidden', !isHidden);
+      icon.textContent = isHidden ? '−' : '+';
+    }
+
+    /* ========================================================
+       6. SHOPPING CART & CHECKOUT FLOW
+       ======================================================== */
+    function changeHeroQty(delta) {
+      heroQty = Math.max(1, Math.min(10, heroQty + delta));
+      document.getElementById('hero-qty').textContent = heroQty;
+      document.getElementById('hero-atc-label').textContent = `Add to Cart — ₹${(heroQty * PRODUCT.price).toLocaleString('en-IN')}`;
+    }
+
+    function addHeroToCart(openCheckoutImmediately = false) {
+      const existing = cart.find(i => i.id === PRODUCT.id);
+      if (existing) {
+        existing.qty += heroQty;
+      } else {
+        cart.push({ ...PRODUCT, qty: heroQty });
+      }
+      updateCartUI();
+      if (openCheckoutImmediately) {
+        openCheckoutModal();
+      } else {
+        showToast(`Added ${heroQty} × PocketCore AI to Cart`);
+        openCart();
+      }
+    }
+
+    function quickBuyNow() {
+      if (cart.length === 0) {
+        cart.push({ ...PRODUCT, qty: 1 });
+        updateCartUI();
+      }
+      openCheckoutModal();
+    }
+
+    function updateCartItemQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + i.qty * i.price, 0);
+
+      document.getElementById('cart-badge').textContent = totalQty;
+      document.getElementById('drawer-count').textContent = totalQty;
+      document.getElementById('cart-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+
+      const checkoutBtn = document.getElementById('checkout-trigger-btn');
+      checkoutBtn.disabled = totalQty === 0;
+
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-12 space-y-3">
+            <div class="text-4xl opacity-40">🛒</div>
+            <p class="text-sm text-zinc-400">Your cart is empty.</p>
+            <button type="button" onclick="closeCart()" class="px-4 py-2 rounded-xl bg-white/10 text-xs font-semibold text-white">Continue Exploring</button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="p-4 rounded-2xl bg-black/40 border border-white/10 flex gap-3.5 items-center">
+            <div class="w-16 h-16 rounded-xl bg-core-card border border-white/15 flex items-center justify-center shrink-0">
+              <div class="w-7 h-7 rounded-md bg-core-orange shadow-[0_0_10px_#FF5500]"></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-sm text-white truncate">${item.name}</h4>
+              <p class="text-[11px] text-zinc-400">${item.variant}</p>
+              <div class="flex items-center justify-between mt-2.5">
+                <span class="font-display font-bold text-white">₹${(item.price * item.qty).toLocaleString('en-IN')}</span>
+                <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-1.5 py-0.5">
+                  <button type="button" onclick="updateCartItemQty('${item.id}', -1)" class="w-6 h-6 text-zinc-300 hover:text-white">&minus;</button>
+                  <span class="font-mono text-xs text-white">${item.qty}</span>
+                  <button type="button" onclick="updateCartItemQty('${item.id}', 1)" class="w-6 h-6 text-zinc-300 hover:text-white">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function openCart() {
+      const backdrop = document.getElementById('cart-backdrop');
+      const drawer = document.getElementById('cart-drawer');
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        drawer.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeCart() {
+      const backdrop = document.getElementById('cart-backdrop');
+      const drawer = document.getElementById('cart-drawer');
+      backdrop.classList.add('opacity-0');
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => backdrop.classList.add('hidden'), 300);
+    }
+
+    function openCheckoutModal() {
+      closeCart();
+      const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + i.qty * i.price, 0);
+      document.getElementById('modal-item-count').textContent = totalQty;
+      document.getElementById('modal-total-amount').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+      document.getElementById('checkout-form').classList.remove('hidden');
+      document.getElementById('checkout-success').classList.add('hidden');
+
+      const modal = document.getElementById('checkout-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkout-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function submitOrder(e) {
+      e.preventDefault();
+      const selectedPayment = document.querySelector('input[name="payment"]:checked')?.value || 'COD';
+      const orderNum = '#PC-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('confirmed-order-id').textContent = orderNum;
+      document.getElementById('confirmed-payment').textContent = selectedPayment;
+
+      document.getElementById('checkout-form').classList.add('hidden');
+      document.getElementById('checkout-success').classList.remove('hidden');
+
+      // Clear cart after successful order
+      cart = [];
+      updateCartUI();
+      playSynthPad('synth');
+    }
+
+    /* ========================================================
+       7. TOAST HELPER & INITIALIZATION
+       ======================================================== */
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2400);
+    }
+
+    document.getElementById('open-cart-btn').addEventListener('click', openCart);
+
+    // Initialize everything on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderModePills();
+      renderScreenContent();
+      renderFeatures('all');
+      renderFaqs();
+      updateCartUI();
+    });
+  </script>
+</body>
+</html>
